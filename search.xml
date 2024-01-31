@@ -2,7 +2,7 @@
 <search>
   <entry>
     <title>Fixmatch主要代码注释</title>
-    <url>/2024/01/30/Fixmatch/</url>
+    <url>/2022/11/12/Fixmatch/</url>
     <content><![CDATA[<h1 id="fixmatch">Fixmatch</h1>
 <h2 id="设置种子">设置种子</h2>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">set_seed</span>(<span class="params">args</span>):</span><br><span class="line">    random.seed(args.seed) <span class="comment"># python的随机性</span></span><br><span class="line">    np.random.seed(args.seed) <span class="comment"># np的随机性</span></span><br><span class="line">    torch.manual_seed(args.seed) <span class="comment"># torch的CPU随机性，为CPU设置随机种子</span></span><br><span class="line">    <span class="keyword">if</span> args.n_gpu &gt; <span class="number">0</span>:</span><br><span class="line">        torch.cuda.manual_seed_all(args.seed) <span class="comment"># torch的GPU随机性，为所有GPU设置随机种子</span></span><br></pre></td></tr></table></figure>
@@ -12,7 +12,6 @@
 <li>将种子赋予torch</li>
 <li>将种子赋予cuda</li>
 </ol>
-<span id="more"></span>
 <h2 id="gpu设置">GPU设置</h2>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> args.local_rank == -<span class="number">1</span>:</span><br><span class="line">    device = torch.device(<span class="string">&#x27;cuda&#x27;</span>, args.gpu_id)</span><br><span class="line">    args.world_size = <span class="number">1</span></span><br><span class="line">    args.n_gpu = torch.cuda.device_count()</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    torch.cuda.set_device(args.local_rank)</span><br><span class="line">    device = torch.device(<span class="string">&#x27;cuda&#x27;</span>, args.local_rank)</span><br><span class="line">    torch.distributed.init_process_group(backend=<span class="string">&#x27;nccl&#x27;</span>)</span><br><span class="line">    args.world_size = torch.distributed.get_world_size()</span><br><span class="line">    args.n_gpu = <span class="number">1</span></span><br></pre></td></tr></table></figure>
 <p>根据local_rank决定是否采取分布式。如果local_rank=-1，说明分布式失效；如果local_rank不等于-1，则根据不同的卡配置不同的进程数；获取设备device方便后续将数据和模型加载在上面（代码为.to(device))；初始化设置分布式的后端等。</p>
@@ -23,6 +22,7 @@
 <p>②模型</p>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> args.local_rank <span class="keyword">not</span> <span class="keyword">in</span> [-<span class="number">1</span>, <span class="number">0</span>]:</span><br><span class="line">    torch.distributed.barrier()</span><br><span class="line"></span><br><span class="line">model = create_model(args)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> args.local_rank == <span class="number">0</span>:</span><br><span class="line">    torch.distributed.barrier()</span><br></pre></td></tr></table></figure>
 <p>先对其余进程设置一个障碍，等到主进程加载完模型和数据后，再对主进程设置障碍，使所有进程都处于同一“出发线”，最后再同时释放。</p>
+<span id="more"></span>
 <h2 id="数据集划分">数据集划分</h2>
 <p>本代码使用的数据集分为三类：带标签的训练集，不带标签的训练集，测试集。虽然表面上需要一个训练集是“不带标签”的，但是PyTorch并没有直接舍去标签的数据集设置。一开始我在想，如果是我自己来写代码，应该要怎么处理呢？后来发现代码根本没有拘泥于“不带标签”这个事情，因为在返回数据集和标签时，使用“_”直接代替掉标签即可，损失函数也不需要使用标签。</p>
 <p>核心API： <figure class="highlight python"><table><tr><td class="code"><pre><span class="line">labeled_dataset, unlabeled_dataset, test_dataset = DATASET_GETTERS[args.dataset](args, <span class="string">&#x27;./data&#x27;</span>)</span><br></pre></td></tr></table></figure></p>
