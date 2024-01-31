@@ -203,7 +203,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2024/01/30/Fixmatch/" class="post-title-link" itemprop="url">Fixmatch</a>
+            <a href="/2024/01/30/Fixmatch/" class="post-title-link" itemprop="url">Fixmatch主要代码注释</a>
         </h2>
 
         <div class="post-meta">
@@ -214,7 +214,7 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2024-01-31 05:22:41 / Modified: 22:40:48" itemprop="dateCreated datePublished" datetime="2024-01-31T05:22:41+08:00">2024-01-31</time>
+              <time title="Created: 2024-01-31 05:22:41 / Modified: 22:48:40" itemprop="dateCreated datePublished" datetime="2024-01-31T05:22:41+08:00">2024-01-31</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -237,10 +237,18 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>Fixmatch主要代码注释</p>
+          <h1 id="fixmatch">Fixmatch</h1>
+<h2 id="设置种子">设置种子</h2>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">set_seed</span>(<span class="params">args</span>):</span><br><span class="line">    random.seed(args.seed) <span class="comment"># python的随机性</span></span><br><span class="line">    np.random.seed(args.seed) <span class="comment"># np的随机性</span></span><br><span class="line">    torch.manual_seed(args.seed) <span class="comment"># torch的CPU随机性，为CPU设置随机种子</span></span><br><span class="line">    <span class="keyword">if</span> args.n_gpu &gt; <span class="number">0</span>:</span><br><span class="line">        torch.cuda.manual_seed_all(args.seed) <span class="comment"># torch的GPU随机性，为所有GPU设置随机种子</span></span><br></pre></td></tr></table></figure>
+<ol type="1">
+<li>设置随机种子</li>
+<li>将种子赋予np</li>
+<li>将种子赋予torch</li>
+<li>将种子赋予cuda</li>
+</ol>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/2024/01/30/Fixmatch/">
+              <a class="btn" href="/2024/01/30/Fixmatch/#more" rel="contents">
                 Read more &raquo;
               </a>
             </div>
@@ -335,6 +343,12 @@
           
         <span class="site-state-item-count">1</span>
         <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
 </div>
