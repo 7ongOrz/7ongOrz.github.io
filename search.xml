@@ -2,7 +2,7 @@
 <search>
   <entry>
     <title>Fixmatch主要代码注释</title>
-    <url>/undefined/2022/111294813030.html</url>
+    <url>/undefined/2022111294813030.html</url>
     <content><![CDATA[<h1 id="fixmatch">Fixmatch</h1>
 <h2 id="设置种子">设置种子</h2>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">set_seed</span>(<span class="params">args</span>):</span><br><span class="line">    random.seed(args.seed) <span class="comment"># python的随机性</span></span><br><span class="line">    np.random.seed(args.seed) <span class="comment"># np的随机性</span></span><br><span class="line">    torch.manual_seed(args.seed) <span class="comment"># torch的CPU随机性，为CPU设置随机种子</span></span><br><span class="line">    <span class="keyword">if</span> args.n_gpu &gt; <span class="number">0</span>:</span><br><span class="line">        torch.cuda.manual_seed_all(args.seed) <span class="comment"># torch的GPU随机性，为所有GPU设置随机种子</span></span><br></pre></td></tr></table></figure>
@@ -145,7 +145,7 @@ optional)：可选输出张量 (Tensor, LongTensor)</p>
   </entry>
   <entry>
     <title>用于高光谱图像分类的折叠谱生成对抗网络</title>
-    <url>/undefined/2023/01203377019304.html</url>
+    <url>/undefined/20230120c94939a8.html</url>
     <content><![CDATA[<h1
 id="用于高光谱图像分类的折叠谱生成对抗网络">用于高光谱图像分类的折叠谱生成对抗网络</h1>
 <h2 id="摘要">1. 摘要</h2>
@@ -166,9 +166,7 @@ CNN 作为基本模型的基于 DL
 <p>折叠光谱有两个优点：</p>
 <p>1.折叠光谱可以从具有正方形形状的折叠光谱中提取光谱域中的纹理特征。选择折叠光谱曲线而不是仅仅重塑的原因是，重塑会破坏光谱向量的拓扑结构，而折叠光谱可以增强折叠光谱的边缘连续性。</p>
 <figure>
-<img
-src="./用于高光谱图像分类的折叠谱生成对抗网络.assets/image-20230120211600109.png"
-alt="image-20230120211600109" />
+<img src="image-20230120211600109.png" alt="image-20230120211600109" />
 <figcaption aria-hidden="true">image-20230120211600109</figcaption>
 </figure>
 <p>如图1所示，长度为225的光谱向量可以转换为15*15的折叠光谱。这样，可以像HSI的空间纹理特征一样，清晰地找到2D折叠频谱中的光谱纹理特征。然后，我们可以使用这些特征来辅助HSI分类。此外，我们选择正方形以获得折叠光谱的最佳形状。<strong>由于正方形在高度和宽度上都比其他矩形具有相等和充分的纹理信息，因此具有更多的光谱纹理特征</strong>，当光谱向量的长度不能折叠成正方形时，我们选择以相反的顺序从最后一个波段扩展光谱向量。遵循这一规则，我们确保正方形折叠频谱可以进入生成对抗网络，而不会丢失频谱信息并破坏频谱向量拓扑。</p>
