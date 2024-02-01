@@ -22,25 +22,25 @@
     <meta name="description" content="基于人工标记的深度卷积神经网络在高光谱图像分类中的有效训练 主要问题  虽然深度学习神经网络（DLNN）可以获得非常好的精度分数，但它的缺点是需要大量的训练数据来估计模型参数。这样的数据并不总是可用的，因为通常一个高光谱图像只有少量训练标签可用。 迁移学习可以解决训练样本数量少的问题，但是这一策略并不直接适用于高光谱图像，因为通常情况下只有一种特定类型或特征的图像可用。  思路 对于DLNN分类，">
 <meta property="og:type" content="article">
 <meta property="og:title" content="基于人工标记的深度卷积神经网络在高光谱图像分类中的有效训练">
-<meta property="og:url" content="https://blog.tongorz.me/article/20230131c94939a8.html">
+<meta property="og:url" content="https://blog.tongorz.me/article/202301319d7ab8f6.html">
 <meta property="og:site_name" content="Ahtong">
 <meta property="og:description" content="基于人工标记的深度卷积神经网络在高光谱图像分类中的有效训练 主要问题  虽然深度学习神经网络（DLNN）可以获得非常好的精度分数，但它的缺点是需要大量的训练数据来估计模型参数。这样的数据并不总是可用的，因为通常一个高光谱图像只有少量训练标签可用。 迁移学习可以解决训练样本数量少的问题，但是这一策略并不直接适用于高光谱图像，因为通常情况下只有一种特定类型或特征的图像可用。  思路 对于DLNN分类，">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://blog.tongorz.me/article/20230131c94939a8/image-20230130210123748.png">
+<meta property="og:image" content="https://blog.tongorz.me/article/20230131null/image-20230130210123748.png">
 <meta property="article:published_time" content="2023-01-31T10:56:38.000Z">
-<meta property="article:modified_time" content="2024-02-01T13:19:02.546Z">
+<meta property="article:modified_time" content="2024-02-01T13:20:04.583Z">
 <meta property="article:author" content="Tong">
 <meta property="article:tag" content="Python">
 <meta property="article:tag" content="深度学习">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://blog.tongorz.me/article/20230131c94939a8/image-20230130210123748.png">
+<meta name="twitter:image" content="https://blog.tongorz.me/article/20230131null/image-20230130210123748.png">
 
 
-<link rel="canonical" href="https://blog.tongorz.me/article/20230131c94939a8.html">
+<link rel="canonical" href="https://blog.tongorz.me/article/202301319d7ab8f6.html">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://blog.tongorz.me/article/20230131c94939a8.html","path":"article/20230131c94939a8.html","title":"基于人工标记的深度卷积神经网络在高光谱图像分类中的有效训练"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://blog.tongorz.me/article/202301319d7ab8f6.html","path":"article/202301319d7ab8f6.html","title":"基于人工标记的深度卷积神经网络在高光谱图像分类中的有效训练"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
 <title>基于人工标记的深度卷积神经网络在高光谱图像分类中的有效训练 | Ahtong</title>
@@ -194,7 +194,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://blog.tongorz.me/article/20230131c94939a8.html">
+    <link itemprop="mainEntityOfPage" href="https://blog.tongorz.me/article/202301319d7ab8f6.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -230,7 +230,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-02-01 21:19:02" itemprop="dateModified" datetime="2024-02-01T21:19:02+08:00">2024-02-01</time>
+      <time title="修改时间：2024-02-01 21:20:04" itemprop="dateModified" datetime="2024-02-01T21:20:04+08:00">2024-02-01</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -304,7 +304,7 @@ class="math inline">\(k = m·n\)</span>。然后我们得到<span
 class="math inline">\(k\)</span>个矩形，其中每个矩形的高约等于<span
 class="math inline">\(h/m\)</span>，而宽度约等于<span
 class="math inline">\(w/n\)</span>。每个矩形用不同的标签定义一个不同的人工类。图1给出了一个示意图。</p>
-<img src="/article/20230131c94939a8/image-20230130210123748.png" class="" title="image-20230130210123748">
+<img src="/article/20230131null/image-20230130210123748.png" class="" title="image-20230130210123748">
 <p>人工标签的功能是让网络学习数据中存在的与类无关的blob模式。这将网络训练的重点放在实际训练标签的微调上，而网络“面向”当前图像的特征。当一个类由多个blob组成，并且并非所有的blob在训练集中都有样本的情况下，它也是很有优势的。在这种情况下，仅使用训练样本不太可能获得足够正确的标签[62]，但提出的网格结构迫使网络估计整个图像的特征。这种方法的另一个优点是将潜在耗时的预训练从专家标记时刻转移到习得时刻。换句话说，网络培训不需要等到专家的标签可用，而是可以在图像记录后立即开始。</p>
 <h2 id="实验">实验</h2>
 <ol type="1">
@@ -330,7 +330,7 @@ class="math inline">\(w/n\)</span>。每个矩形用不同的标签定义一个�
   </li>
   <li class="post-copyright-link">
       <strong>本文链接：</strong>
-      <a href="https://blog.tongorz.me/article/20230131c94939a8.html" title="基于人工标记的深度卷积神经网络在高光谱图像分类中的有效训练">https://blog.tongorz.me/article/20230131c94939a8.html</a>
+      <a href="https://blog.tongorz.me/article/202301319d7ab8f6.html" title="基于人工标记的深度卷积神经网络在高光谱图像分类中的有效训练">https://blog.tongorz.me/article/202301319d7ab8f6.html</a>
   </li>
   <li class="post-copyright-license">
       <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
@@ -478,7 +478,7 @@ class="math inline">\(w/n\)</span>。每个矩形用不同的标签定义一个�
   </script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
 
-<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"7ongorz","repo":"comments","client_id":"6d76b8f8f72b9e89ae90","client_secret":"b69b04505a5c12dc9204e5a5a17ddbe2e1e279f5","admin_user":"7ongorz","distraction_free_mode":true,"language":"zh-CN","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.min.js","integrity":"sha256-MVK9MGD/XJaGyIghSVrONSnoXoGh3IFxLw0zfvzpxR4="},"path_md5":"87668463bb841aca15941a5d598182aa"}</script>
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"7ongorz","repo":"comments","client_id":"6d76b8f8f72b9e89ae90","client_secret":"b69b04505a5c12dc9204e5a5a17ddbe2e1e279f5","admin_user":"7ongorz","distraction_free_mode":true,"language":"zh-CN","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.min.js","integrity":"sha256-MVK9MGD/XJaGyIghSVrONSnoXoGh3IFxLw0zfvzpxR4="},"path_md5":"388ee43659305d8d6b1bd78d1120fc14"}</script>
 <script src="/js/third-party/comments/gitalk.js"></script>
 
 </body>
