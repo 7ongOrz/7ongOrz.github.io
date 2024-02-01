@@ -314,7 +314,7 @@
   <script src="https://cdn.jsdelivr.net/npm/moment-precise-range-plugin@1.3.0/moment-precise-range.min.js"></script>
   <script>
     function timer() {
-      var ages = moment.preciseDiff(moment(),moment(20240130 10:00:00,"YYYYMMDD hh:mm:ss"));
+      var ages = moment.preciseDiff(moment(),moment(20240130100000,"YYYYMMDDhmmss"));
       ages = ages.replace(/years?/, "年");
       ages = ages.replace(/months?/, "月");
       ages = ages.replace(/days?/, "天");
