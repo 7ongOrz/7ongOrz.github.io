@@ -541,7 +541,7 @@ optional)：可选输出张量 (Tensor, LongTensor)</p>
   <script src="https://cdn.jsdelivr.net/npm/moment-precise-range-plugin@1.3.0/moment-precise-range.min.js"></script>
   <script>
     function timer() {
-      var ages = moment.preciseDiff(moment(),moment(20240130,"YYYYMMDD"));
+      var ages = moment.preciseDiff(moment(),moment(20240130100000,"YYYYMMDD"));
       ages = ages.replace(/years?/, "年");
       ages = ages.replace(/months?/, "月");
       ages = ages.replace(/days?/, "天");
@@ -549,7 +549,7 @@ optional)：可选输出张量 (Tensor, LongTensor)</p>
       ages = ages.replace(/minutes?/, "分");
       ages = ages.replace(/seconds?/, "秒");
       ages = ages.replace(/\d+/g, '<span style="color:#1890ff">$&</span>');
-      div.innerHTML = `footer.site_runtime ${ages}`;
+      div.innerHTML = `本站已稳定运行 ${ages}`;
     }
     var div = document.createElement("div");
     var copyright = document.querySelector(".copyright");
