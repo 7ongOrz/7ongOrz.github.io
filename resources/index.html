@@ -313,7 +313,7 @@
       ages = ages.replace(/minutes?/, "分");
       ages = ages.replace(/seconds?/, "秒");
       ages = ages.replace(/\d+/g, '<span style="color:#1890ff">$&</span>');
-      div.innerHTML = `本站已稳定运行 ${ages}`;
+      div.innerHTML = `footer.site_runtime ${ages}`;
     }
     var div = document.createElement("div");
     var copyright = document.querySelector(".copyright");
