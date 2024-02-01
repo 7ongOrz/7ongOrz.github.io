@@ -22,25 +22,23 @@
     <meta name="description" content="用于高光谱图像分类的折叠谱生成对抗网络 1. 摘要 本文提出了一种新的基于生成对抗网络(GAN)和折叠谱(FS-GAN)的半监督方法。具体来说，将原始光谱向量折叠为二维正方形光谱作为GAN的输入，可以生成光谱纹理，并在相邻和非相邻光谱波段上提供更大的感受野，用于深度特征提取。然后将生成的假折叠谱、标记和未标记的真实折叠谱输入到鉴别器中进行半监督学习。采用特征匹配策略防止模型崩溃。 2. 本文工作">
 <meta property="og:type" content="article">
 <meta property="og:title" content="用于高光谱图像分类的折叠谱生成对抗网络">
-<meta property="og:url" content="https://blog.tongorz.me/undefined/20230120c94939a8.html">
+<meta property="og:url" content="https://blog.tongorz.me/article/20230120c94939a8.html">
 <meta property="og:site_name" content="Ahtong">
 <meta property="og:description" content="用于高光谱图像分类的折叠谱生成对抗网络 1. 摘要 本文提出了一种新的基于生成对抗网络(GAN)和折叠谱(FS-GAN)的半监督方法。具体来说，将原始光谱向量折叠为二维正方形光谱作为GAN的输入，可以生成光谱纹理，并在相邻和非相邻光谱波段上提供更大的感受野，用于深度特征提取。然后将生成的假折叠谱、标记和未标记的真实折叠谱输入到鉴别器中进行半监督学习。采用特征匹配策略防止模型崩溃。 2. 本文工作">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://blog.tongorz.me/undefined/image-20230120211600109.png">
 <meta property="article:published_time" content="2023-01-20T12:51:05.000Z">
-<meta property="article:modified_time" content="2024-02-01T13:01:49.422Z">
+<meta property="article:modified_time" content="2024-02-01T13:05:01.853Z">
 <meta property="article:author" content="Tong">
 <meta property="article:tag" content="Python">
 <meta property="article:tag" content="深度学习">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://blog.tongorz.me/undefined/image-20230120211600109.png">
 
 
-<link rel="canonical" href="https://blog.tongorz.me/undefined/20230120c94939a8.html">
+<link rel="canonical" href="https://blog.tongorz.me/article/20230120c94939a8.html">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://blog.tongorz.me/undefined/20230120c94939a8.html","path":"undefined/20230120c94939a8.html","title":"用于高光谱图像分类的折叠谱生成对抗网络"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://blog.tongorz.me/article/20230120c94939a8.html","path":"article/20230120c94939a8.html","title":"用于高光谱图像分类的折叠谱生成对抗网络"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
 <title>用于高光谱图像分类的折叠谱生成对抗网络 | Ahtong</title>
@@ -195,7 +193,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://blog.tongorz.me/undefined/20230120c94939a8.html">
+    <link itemprop="mainEntityOfPage" href="https://blog.tongorz.me/article/20230120c94939a8.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -231,7 +229,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-02-01 21:01:49" itemprop="dateModified" datetime="2024-02-01T21:01:49+08:00">2024-02-01</time>
+      <time title="修改时间：2024-02-01 21:05:01" itemprop="dateModified" datetime="2024-02-01T21:05:01+08:00">2024-02-01</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -294,7 +292,9 @@ CNN 作为基本模型的基于 DL
 <p>折叠光谱有两个优点：</p>
 <p>1.折叠光谱可以从具有正方形形状的折叠光谱中提取光谱域中的纹理特征。选择折叠光谱曲线而不是仅仅重塑的原因是，重塑会破坏光谱向量的拓扑结构，而折叠光谱可以增强折叠光谱的边缘连续性。</p>
 <figure>
-<img src="image-20230120211600109.png" alt="image-20230120211600109" />
+<img
+src="用于高光谱图像分类的折叠谱生成对抗网络.assets/image-20230120211600109.png"
+alt="image-20230120211600109" />
 <figcaption aria-hidden="true">image-20230120211600109</figcaption>
 </figure>
 <p>如图1所示，长度为225的光谱向量可以转换为15*15的折叠光谱。这样，可以像HSI的空间纹理特征一样，清晰地找到2D折叠频谱中的光谱纹理特征。然后，我们可以使用这些特征来辅助HSI分类。此外，我们选择正方形以获得折叠光谱的最佳形状。<strong>由于正方形在高度和宽度上都比其他矩形具有相等和充分的纹理信息，因此具有更多的光谱纹理特征</strong>，当光谱向量的长度不能折叠成正方形时，我们选择以相反的顺序从最后一个波段扩展光谱向量。遵循这一规则，我们确保正方形折叠频谱可以进入生成对抗网络，而不会丢失频谱信息并破坏频谱向量拓扑。</p>
@@ -375,7 +375,7 @@ alt="image-20230120231417367" />
   </li>
   <li class="post-copyright-link">
       <strong>本文链接：</strong>
-      <a href="https://blog.tongorz.me/undefined/20230120c94939a8.html" title="用于高光谱图像分类的折叠谱生成对抗网络">https://blog.tongorz.me/undefined/20230120c94939a8.html</a>
+      <a href="https://blog.tongorz.me/article/20230120c94939a8.html" title="用于高光谱图像分类的折叠谱生成对抗网络">https://blog.tongorz.me/article/20230120c94939a8.html</a>
   </li>
   <li class="post-copyright-license">
       <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
@@ -392,7 +392,7 @@ alt="image-20230120231417367" />
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/undefined/2022111294813030.html" rel="prev" title="Fixmatch主要代码注释">
+                <a href="/article/2022111294813030.html" rel="prev" title="Fixmatch主要代码注释">
                   <i class="fa fa-angle-left"></i> Fixmatch主要代码注释
                 </a>
             </div>
@@ -523,7 +523,7 @@ alt="image-20230120231417367" />
   </script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
 
-<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"7ongorz","repo":"comments","client_id":"6d76b8f8f72b9e89ae90","client_secret":"b69b04505a5c12dc9204e5a5a17ddbe2e1e279f5","admin_user":"7ongorz","distraction_free_mode":true,"language":"zh-CN","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.min.js","integrity":"sha256-MVK9MGD/XJaGyIghSVrONSnoXoGh3IFxLw0zfvzpxR4="},"path_md5":"2460ce64e93c278b6e5c2dee47c80f3c"}</script>
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"7ongorz","repo":"comments","client_id":"6d76b8f8f72b9e89ae90","client_secret":"b69b04505a5c12dc9204e5a5a17ddbe2e1e279f5","admin_user":"7ongorz","distraction_free_mode":true,"language":"zh-CN","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.min.js","integrity":"sha256-MVK9MGD/XJaGyIghSVrONSnoXoGh3IFxLw0zfvzpxR4="},"path_md5":"a8de44cd0c5e2653b37bff4fedcd0997"}</script>
 <script src="/js/third-party/comments/gitalk.js"></script>
 
 </body>
