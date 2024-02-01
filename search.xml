@@ -2,7 +2,7 @@
 <search>
   <entry>
     <title>Fixmatch主要代码注释</title>
-    <url>/2022/11/12/Fixmatch/</url>
+    <url>/undefined/2022/111294813030.html</url>
     <content><![CDATA[<h1 id="fixmatch">Fixmatch</h1>
 <h2 id="设置种子">设置种子</h2>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">set_seed</span>(<span class="params">args</span>):</span><br><span class="line">    random.seed(args.seed) <span class="comment"># python的随机性</span></span><br><span class="line">    np.random.seed(args.seed) <span class="comment"># np的随机性</span></span><br><span class="line">    torch.manual_seed(args.seed) <span class="comment"># torch的CPU随机性，为CPU设置随机种子</span></span><br><span class="line">    <span class="keyword">if</span> args.n_gpu &gt; <span class="number">0</span>:</span><br><span class="line">        torch.cuda.manual_seed_all(args.seed) <span class="comment"># torch的GPU随机性，为所有GPU设置随机种子</span></span><br></pre></td></tr></table></figure>
@@ -145,7 +145,7 @@ optional)：可选输出张量 (Tensor, LongTensor)</p>
   </entry>
   <entry>
     <title>用于高光谱图像分类的折叠谱生成对抗网络</title>
-    <url>/2023/01/20/%E7%94%A8%E4%BA%8E%E9%AB%98%E5%85%89%E8%B0%B1%E5%9B%BE%E5%83%8F%E5%88%86%E7%B1%BB%E7%9A%84%E6%8A%98%E5%8F%A0%E8%B0%B1%E7%94%9F%E6%88%90%E5%AF%B9%E6%8A%97%E7%BD%91%E7%BB%9C/</url>
+    <url>/undefined/2023/01203377019304.html</url>
     <content><![CDATA[<h1
 id="用于高光谱图像分类的折叠谱生成对抗网络">用于高光谱图像分类的折叠谱生成对抗网络</h1>
 <h2 id="摘要">1. 摘要</h2>
@@ -167,7 +167,7 @@ CNN 作为基本模型的基于 DL
 <p>1.折叠光谱可以从具有正方形形状的折叠光谱中提取光谱域中的纹理特征。选择折叠光谱曲线而不是仅仅重塑的原因是，重塑会破坏光谱向量的拓扑结构，而折叠光谱可以增强折叠光谱的边缘连续性。</p>
 <figure>
 <img
-src="用于高光谱图像分类的折叠谱生成对抗网络.assets/image-20230120211600109.png"
+src="./用于高光谱图像分类的折叠谱生成对抗网络.assets/image-20230120211600109.png"
 alt="image-20230120211600109" />
 <figcaption aria-hidden="true">image-20230120211600109</figcaption>
 </figure>
@@ -193,21 +193,21 @@ alt="image-20230120214831066" />
 <figcaption aria-hidden="true">image-20230120214831066</figcaption>
 </figure>
 <p>图三为FS-GAN框架，我们可以看到生成器接收到噪声<span
-class="math display">\[\rho_z(z)\]</span>作为输入，而鉴别器接收标记和未标记的
+class="math inline">\(\rho_z(z)\)</span>作为输入，而鉴别器接收标记和未标记的
 HSI
 折叠谱，结合生成器提供的生成折叠谱作为输入。鉴别器的最后一层不再是只区分测试样本真伪的二进制分类器。相反，我们选择<span
-class="math display">\[K+1\]</span>分类器，其中<span
-class="math display">\[K\]</span>是类的数量，另一类是假样本的类。只要我们将折叠谱输入到模型中，就可以实现来自分类器的<span
-class="math display">\[K+1\]</span>的逻辑向量<span
-class="math display">\[{l_1,...,l_{k+1}}\]</span>。FS-GAN的损失函数<span
-class="math display">\[L\]</span>包括两部分，监督损失<span
-class="math display">\[L_{supervised}\]</span>由预测类<span
-class="math display">\[\rho_{model}(x,y)\]</span>和有标签折叠谱<span
-class="math display">\[\rho_{data}(x,y)\]</span>交叉熵得到，无监督损失<span
-class="math display">\[L_{unsupervised}\]</span>是根据未标记的<span
-class="math display">\[\rho_{data}(x)\]</span>和生成的折叠谱<span
-class="math display">\[G(z)\]</span>分别分为K个真类和一个假类的概率<span
-class="math display">\[\rho_{model}\]</span>设计的。
+class="math inline">\(K+1\)</span>分类器，其中<span
+class="math inline">\(K\)</span>是类的数量，另一类是假样本的类。只要我们将折叠谱输入到模型中，就可以实现来自分类器的<span
+class="math inline">\(K+1\)</span>的逻辑向量<span
+class="math inline">\({l_1,...,l_{k+1}}\)</span>。FS-GAN的损失函数<span
+class="math inline">\(L\)</span>包括两部分，监督损失<span
+class="math inline">\(L_{supervised}\)</span>由预测类<span
+class="math inline">\(\rho_{model}(x,y)\)</span>和有标签折叠谱<span
+class="math inline">\(\rho_{data}(x,y)\)</span>交叉熵得到，无监督损失<span
+class="math inline">\(L_{unsupervised}\)</span>是根据未标记的<span
+class="math inline">\(\rho_{data}(x)\)</span>和生成的折叠谱<span
+class="math inline">\(G(z)\)</span>分别分为K个真类和一个假类的概率<span
+class="math inline">\(\rho_{model}\)</span>设计的。
 在此基础上，FS-GAN的损失函数为：</p>
 <figure>
 <img
@@ -217,7 +217,7 @@ alt="image-20230120231144192" />
 </figure>
 <p>半监督GAN的训练过程不稳定，容易分解。为了解决这些问题，我们采用了特征匹配策略，而不是简单地最大化鉴别器的输出。这种特征匹配策略将通过设置生成器中的不动点来使生成的数据与真实数据分布匹配。固定点是根据真实数据计算的，因此可以准确地描述真实数据的分布。如图
 4 所示，我们选择隐藏层<span
-class="math display">\[f(x)\]</span>的输出作为不动点，这意味着判别器不会过度训练，FS-GAN
+class="math inline">\(f(x)\)</span>的输出作为不动点，这意味着判别器不会过度训练，FS-GAN
 模型会变得稳定。</p>
 <figure>
 <img
