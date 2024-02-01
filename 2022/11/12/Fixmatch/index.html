@@ -494,10 +494,8 @@ optional)：可选输出张量 (Tensor, LongTensor)</p>
     </span>
 </div>
 
-<div>
-  <span id="timeDate">载入天数...</span>
-  <span id="times">载入时分秒...</span>
-</div>
+<span id="timeDate">载入天数...</span>
+<span id="times">载入时分秒...</span>
 <script>
     var now = new Date();
     function createtime() {
@@ -512,7 +510,7 @@ optional)：可选输出张量 (Tensor, LongTensor)</p>
         document.getElementById("timeDate").innerHTML = "⏱️本站已稳定运行 "+dnum+" 天 ";
         document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒";
     }
-setInterval("createtime()",250);
+    setInterval("createtime()",250);
 </script>
   <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
   </div><script color="0,0,0" opacity="0.5" zIndex="-1" count="99" src="https://cdn.jsdelivr.net/npm/canvas-nest.js@1/dist/canvas-nest.js"></script>
