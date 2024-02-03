@@ -541,7 +541,7 @@ figure.highlight::before {
   position: absolute;
 }
 .highlight-fold {
-  max-height: 40px;
+  max-height: 35px;
   overflow-y: hidden !important;
 }
 .highlight-fold .expand-btn,
