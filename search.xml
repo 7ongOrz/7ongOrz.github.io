@@ -336,7 +336,9 @@ application</a></p>
   <entry>
     <title>基于人工标记的深度卷积神经网络在高光谱图像分类中的有效训练</title>
     <url>/article/202301319d7ab8f6.html</url>
-    <content><![CDATA[<h2 id="主要问题">主要问题</h2>
+    <content><![CDATA[<p>原文：《Effective Training of Deep Convolutional Neural Networks for
+Hyperspectral Image Classification through Artificial Labeling》</p>
+<h2 id="主要问题">主要问题</h2>
 <ol type="1">
 <li>虽然深度学习神经网络（DLNN）可以获得非常好的精度分数，但它的缺点是需要大量的训练数据来估计模型参数。这样的数据并不总是可用的，因为通常一个高光谱图像只有少量训练标签可用。</li>
 <li>迁移学习可以解决训练样本数量少的问题，但是这一策略并不直接适用于高光谱图像，因为通常情况下只有一种特定类型或特征的图像可用。</li>
@@ -378,7 +380,9 @@ application</a></p>
   <entry>
     <title>基于半监督三维深度神经网络和自适应波段选择的高光谱图像分类</title>
     <url>/article/2023020159010d7c.html</url>
-    <content><![CDATA[<h2 id="主要问题">1 主要问题</h2>
+    <content><![CDATA[<p>原文：《Hyperspectral imagery classification based on semi-supervised
+3-D deep neural network and adaptive band selection》</p>
+<h2 id="主要问题">1 主要问题</h2>
 <p>HSI分类仍然有以下问题：</p>
 <ol type="1">
 <li>光谱波段之间的高度相关性；</li>
@@ -448,7 +452,9 @@ unpooling（解池化？)。最后一层是soft-max函数。</p>
   <entry>
     <title>基于深度学习的高光谱图像细粒度分类</title>
     <url>/article/2023020745a6f4e2.html</url>
-    <content><![CDATA[<h1 id="主要问题">主要问题</h1>
+    <content><![CDATA[<p>原文：《Fine-Grained Classification of Hyperspectral Imagery Based on
+Deep Learning》</p>
+<h1 id="主要问题">主要问题</h1>
 <ol type="1">
 <li>传统的分类方法不能很好地处理HSI的细粒度分类。细粒度分类是对类别数量相对较多、差异较小的数据进行分类。</li>
 <li>由于标记样本的难度和耗时，标记的训练样本通常是有限的。有必要使用未标记的样本，这可以用来提高分类性能。</li>
@@ -510,7 +516,9 @@ Auto-Encoder-DenseNet 的一元势。| 全连接 CRF 执行能量函数：
   <entry>
     <title>基于膨胀卷积神经网络的天山地区高光谱地质体分类</title>
     <url>/article/202302069487f6b7.html</url>
-    <content><![CDATA[<h2 id="主要思路">主要思路</h2>
+    <content><![CDATA[<p>原文：《Geologic Body Classification of Hyperspectral Data Based on
+Dilated Convolution Neural Network at Tianshan_Area》</p>
+<h2 id="主要思路">主要思路</h2>
 <p>我们采用了一种具有很强特征提取能力的经典神经网络CNN，它有助于在不需要太多人工干预的情况下进行分类任务。但受卷积层核大小的限制，除非CNN模型具有更深层次的结构，否则传统的CNN很难提取高层特征。然而，有了更深层次的架构，该模型将有更高的过度适应风险。针对这一问题，我们采用了一种新的卷积运算，称为膨胀卷积，它最初是为分割任务而提出的。分割需要结合全分辨率输出进行多尺度上下文推理，但传统的分割网络通过连续的池化和子采样层集成多尺度上下文信息，从而降低分辨率，直到获得全局预测。在池化层之后，会丢失有关特征的空间信息，这将影响分类网络的性能。在不使用最大池化层的情况下，我们设计了基于膨胀卷积的一维CNN模型，在不损失分辨率和覆盖率的情况下支持感受野的指数扩展，有效地提高了CNN在高光谱数据分类上的性能。</p>
 <h2 id="本文方法">本文方法</h2>
 <h3 id="一维膨胀卷积">一维膨胀卷积</h3>
@@ -535,7 +543,10 @@ Auto-Encoder-DenseNet 的一元势。| 全连接 CRF 执行能量函数：
   <entry>
     <title>基于轻量级卷积神经网络和深度聚类的协同学习在有限训练样本下的高光谱图像半监督分类</title>
     <url>/article/20230204d7763d76.html</url>
-    <content><![CDATA[<h2 id="主要问题">主要问题</h2>
+    <content><![CDATA[<p>原文：《Collaborative learning of lightweight convolutional neural
+network and deep clustering for hyperspectral image semi-supervised
+classification with limited training samples》</p>
+<h2 id="主要问题">主要问题</h2>
 <ol type="1">
 <li>为了训练一个具有良好泛化能力的深度学习模型，需要大量的数据集和足够的标记数据。然而，地面真相收集和标记工作是昂贵和耗时的。因此，对于许多特定的应用，HSI分类方法被研究为在只有有限数量的训练样本可用时能够处理高维数据。</li>
 <li>当可用的训练样本有限时，深度学习方法可能会出现过拟合。</li>
