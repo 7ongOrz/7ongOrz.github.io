@@ -457,7 +457,7 @@ key（添加<strong>SSH</strong> 密钥）。</p>
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-02-03 15:54:30" itemprop="dateModified" datetime="2024-02-03T15:54:30+08:00">2024-02-03</time>
+      <time title="修改时间：2024-02-03 16:00:37" itemprop="dateModified" datetime="2024-02-03T16:00:37+08:00">2024-02-03</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -511,11 +511,6 @@ HSI
 <li>提出了一种自适应DR方法，通过寻找最具信息量、最具辨识度和最具特色的低冗余光谱波段，同时保留HSI的物理意义，解决维数问题。它是一种半监督波段选择方法，不需要大量的训练样本来选择光谱波段。</li>
 <li>提出了一种基于卷积编码器-解码器的半监督三维CNN的HSI空间光谱分类方法，利用较少的训练样本提取HSI的空间光谱特征，提高了分类性能。</li>
 </ol>
-<h2 id="主要思路">3 主要思路：</h2>
-<p>自适应降维方法可以解决维度诅咒的问题，休斯。事实上，当每个类别的标记训练样本的数量与像素的维度相比非常小时，即HSI的光谱带（特征）的数量与用于训练的样本数量之间的比率非常低时，就会出现这个问题。事实上，休斯现象经常导致错误的分类，因此导致不良的表现。此外，当我们增加3-D
-CNN分类器的输入（HSI）中的规格带数量时，分类率会下降。通常情况下，维数的诅咒会限制三维CNN分类器的泛化能力，并引起过度拟合问题。因此，为了克服维数诅咒，避免半监督3-D
-CNN模型的过度拟合，我们提出了一种半监督频段选择方法，其目的是在保留HSI中原始数据的物理意义的同时，找到信息量最大、鉴别力最强和最具特色的频段。因此，我们不使用全部的光谱带来训练半监督的三维CNN模型，而只使用减少的相关带子集。</p>
-<img src="/article/2023020159010d7c/image-20230131222645189.png" class="" title="image-20230131222645189">
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/article/2023020159010d7c.html#more" rel="contents">
