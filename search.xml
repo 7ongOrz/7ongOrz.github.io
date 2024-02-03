@@ -612,7 +612,9 @@ et al.，
   <entry>
     <title>用于高光谱图像分类的折叠谱生成对抗网络</title>
     <url>/article/20230120c94939a8.html</url>
-    <content><![CDATA[<h2 id="摘要">摘要</h2>
+    <content><![CDATA[<p>原文：《Generative Adversarial Network with Folded Spectrum for
+Hyperspectral Image Classification》</p>
+<h2 id="摘要">摘要</h2>
 <p>本文提出了一种新的基于生成对抗网络(GAN)和折叠谱(FS-GAN)的半监督方法。具体来说，将原始光谱向量折叠为二维正方形光谱作为GAN的输入，可以生成光谱纹理，并在相邻和非相邻光谱波段上提供更大的感受野，用于深度特征提取。然后将生成的假折叠谱、标记和未标记的真实折叠谱输入到鉴别器中进行半监督学习。采用特征匹配策略防止模型崩溃。</p>
 <h2 id="本文工作">本文工作</h2>
 <ol type="1">
