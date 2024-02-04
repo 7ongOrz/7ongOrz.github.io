@@ -197,7 +197,7 @@ mjx-container[display="true"] + br {
 
 
 <nav class="site-nav">
-  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">5</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">2</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">19</span></a></li><li class="menu-item menu-item-resources"><a href="/resources/" rel="section"><i class="fa fa-download fa-fw"></i>资源</a></li>
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">5</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">2</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">20</span></a></li><li class="menu-item menu-item-resources"><a href="/resources/" rel="section"><i class="fa fa-download fa-fw"></i>资源</a></li>
       <li class="menu-item menu-item-search">
         <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
         </a>
@@ -262,7 +262,7 @@ mjx-container[display="true"] + br {
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">19</span>
+          <span class="site-state-item-count">20</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -290,6 +290,136 @@ mjx-container[display="true"] + br {
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://blog.tongorz.me/article/2023021054439210.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/81060761_p0.jpg">
+      <meta itemprop="name" content="Ahtong">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Ahtong's blog">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Ahtong's blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/article/2023021054439210.html" class="post-title-link" itemprop="url">基于半监督广义学习系统的高光谱图像分类</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2023-02-10 20:54:28" itemprop="dateCreated datePublished" datetime="2023-02-10T20:54:28+08:00">2023-02-10</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-02-04 19:23:22" itemprop="dateModified" datetime="2024-02-04T19:23:22+08:00">2024-02-04</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">论文笔记</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>2.3k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>8 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>原文：《Hyperspectral Imagery Classification Based on Semi-Supervised
+Broad Learning System》</p>
+<h2 id="主要思路">主要思路</h2>
+<h3 id="深度学习">深度学习</h3>
+<ol type="1">
+<li>方法需要复杂的结构调整和大量的网络训练计算。</li>
+<li>存在标记样本数量有限的问题。</li>
+</ol>
+<p>针对这些问题，Chen和Liu[20]提出了一种新的广义学习系统(BLS)，提供一种可选的学习方法。该方法基于随机向量函数链接神经网络(RVFLNN)。首先，将原始数据通过随机权重映射为映射特征(MF)，并存储在特征节点中。接下来，同样通过随机权重映射MF，得到增强节点(EN)进行广泛展开。最后，用岭回归逼近法求解<span class="math inline"><mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: 0;" xmlns="http://www.w3.org/2000/svg" width="2.672ex" height="1.545ex" role="img" focusable="false" viewBox="0 -683 1181 683"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><path data-c="1D43F" d="M228 637Q194 637 192 641Q191 643 191 649Q191 673 202 682Q204 683 217 683Q271 680 344 680Q485 680 506 683H518Q524 677 524 674T522 656Q517 641 513 637H475Q406 636 394 628Q387 624 380 600T313 336Q297 271 279 198T252 88L243 52Q243 48 252 48T311 46H328Q360 46 379 47T428 54T478 72T522 106T564 161Q580 191 594 228T611 270Q616 273 628 273H641Q647 264 647 262T627 203T583 83T557 9Q555 4 553 3T537 0T494 -1Q483 -1 418 -1T294 0H116Q32 0 32 10Q32 17 34 24Q39 43 44 45Q48 46 59 46H65Q92 46 125 49Q139 52 144 61Q147 65 216 339T285 628Q285 635 228 637Z"></path></g><g data-mml-node="mn" transform="translate(681,0)"><path data-c="32" d="M109 429Q82 429 66 447T50 491Q50 562 103 614T235 666Q326 666 387 610T449 465Q449 422 429 383T381 315T301 241Q265 210 201 149L142 93L218 92Q375 92 385 97Q392 99 409 186V189H449V186Q448 183 436 95T421 3V0H50V19V31Q50 38 56 46T86 81Q115 113 136 137Q145 147 170 174T204 211T233 244T261 278T284 308T305 340T320 369T333 401T340 431T343 464Q343 527 309 573T212 619Q179 619 154 602T119 569T109 550Q109 549 114 549Q132 549 151 535T170 489Q170 464 154 447T109 429Z"></path></g></g></g></svg></mjx-container></span>范数的归一化优化，得到最终网络权值。与DL相比，BLS具有以下优势:(1)BLS仅由三个部分组成，而深度学习需要由多个非线性单元叠加的深层结构。因此，BLS的结构更简单。(2)
+BLS采用岭回归法求解网络权值，DL采用梯度下降法求解。当权重没有很好地初始化时，DL需要更多的迭代。因此，BLS的训练过程更简单、更快。(3)
+BLS中从输入数据到MF和从MF到EN的连接权值随机生成，可训练参数仅包括从MF和EN到输出节点的连接权值。因此，与DL相比，BLS一般需要较少的网络参数训练，因此标记训练样本较少。</p>
+<h3 id="基于图的ssl方法">基于图的SSL方法</h3>
+<ol type="1">
+<li>算法性能受所构造图的影响较大。</li>
+<li>相邻参数具有较高的灵敏度。</li>
+</ol>
+<p>考虑数据类结构，Shao, et
+al.[28]提出了一个类概率(CP)结构，它可以通过类概率矩阵来表示每个样本与每个类之间的关系。本文采用此方法。</p>
+<h2 id="本文方法">本文方法</h2>
+<p>提出了一种基于半监督BLS(半监督BLS)的HSI分类方法。</p>
+<ol type="1">
+<li>这是第一次尝试将BLS应用于HSI分类任务。所提出的SBLS可以获得更高的HSI分类精度和更快的训练速度。</li>
+<li>在扩展半监督BLS中引入类概率结构，既能利用有限数量的标记样本，又能利用大量的未标记样本。</li>
+</ol>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/article/2023021054439210.html#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1405,14 +1535,14 @@ Hyperspectral Image Classification》</p>
       <i class="fa fa-chart-line"></i>
     </span>
       <span>站点总字数：</span>
-    <span title="站点总字数">47k</span>
+    <span title="站点总字数">50k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span>站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">2:38</span>
+    <span title="站点阅读时长">2:45</span>
   </span>
 </div>
 <div class="busuanzi-count">
