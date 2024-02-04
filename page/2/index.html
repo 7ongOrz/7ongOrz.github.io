@@ -21,21 +21,21 @@
 
     <meta property="og:type" content="website">
 <meta property="og:title" content="Ahtong">
-<meta property="og:url" content="https://blog.tongorz.me/archives/2023/index.html">
+<meta property="og:url" content="https://blog.tongorz.me/page/2/index.html">
 <meta property="og:site_name" content="Ahtong">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:author" content="Tong">
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="https://blog.tongorz.me/archives/2023/">
+<link rel="canonical" href="https://blog.tongorz.me/page/2/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":false,"lang":"zh-CN","comments":"","permalink":"","path":"archives/2023/index.html","title":""}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":true,"isPost":false,"lang":"zh-CN","comments":"","permalink":"","path":"page/2/index.html","title":""}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>归档 | Ahtong</title>
+<title>Ahtong</title>
   
 
 
@@ -287,209 +287,135 @@ mjx-container[display="true"] + br {
 
     </div>
 
-    <div class="main-inner archive posts-collapse">
+    <div class="main-inner index posts-expand">
+
+    
 
 
+<div class="post-block">
   
   
-  
-  <div class="post-block">
-    <div class="post-content">
-      <div class="collection-title">
-        <span class="collection-header">嗯..! 目前共计 11 篇日志。 继续努力。</span>
-      </div>
 
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://blog.tongorz.me/article/2022111294813030.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Tong">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Ahtong">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Ahtong">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/article/2022111294813030.html" class="post-title-link" itemprop="url">Fixmatch主要代码注释</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2022-11-12 09:58:45" itemprop="dateCreated datePublished" datetime="2022-11-12T09:58:45+08:00">2022-11-12</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-02-03 17:16:21" itemprop="dateModified" datetime="2024-02-03T17:16:21+08:00">2024-02-03</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">论文笔记</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>4.9k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>16 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="设置种子">设置种子</h2>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">set_seed</span>(<span class="params">args</span>):</span><br><span class="line">    random.seed(args.seed) <span class="comment"># python的随机性</span></span><br><span class="line">    np.random.seed(args.seed) <span class="comment"># np的随机性</span></span><br><span class="line">    torch.manual_seed(args.seed) <span class="comment"># torch的CPU随机性，为CPU设置随机种子</span></span><br><span class="line">    <span class="keyword">if</span> args.n_gpu &gt; <span class="number">0</span>:</span><br><span class="line">        torch.cuda.manual_seed_all(args.seed) <span class="comment"># torch的GPU随机性，为所有GPU设置随机种子</span></span><br></pre></td></tr></table></figure>
+<ol type="1">
+<li>设置随机种子</li>
+<li>将种子赋予np</li>
+<li>将种子赋予torch</li>
+<li>将种子赋予cuda</li>
+</ol>
+<h2 id="gpu设置">GPU设置</h2>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> args.local_rank == -<span class="number">1</span>:</span><br><span class="line">    device = torch.device(<span class="string">'cuda'</span>, args.gpu_id)</span><br><span class="line">    args.world_size = <span class="number">1</span></span><br><span class="line">    args.n_gpu = torch.cuda.device_count()</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    torch.cuda.set_device(args.local_rank)</span><br><span class="line">    device = torch.device(<span class="string">'cuda'</span>, args.local_rank)</span><br><span class="line">    torch.distributed.init_process_group(backend=<span class="string">'nccl'</span>)</span><br><span class="line">    args.world_size = torch.distributed.get_world_size()</span><br><span class="line">    args.n_gpu = <span class="number">1</span></span><br></pre></td></tr></table></figure>
+<p>根据local_rank决定是否采取分布式。如果local_rank=-1，说明分布式失效；如果local_rank不等于-1，则根据不同的卡配置不同的进程数；获取设备device方便后续将数据和模型加载在上面（代码为.to(device))；初始化设置分布式的后端等。</p>
+<p><strong>torch.distributed.barrier()的使用：</strong></p>
+<p>①数据集：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> args.local_rank <span class="keyword">not</span> <span class="keyword">in</span> [-<span class="number">1</span>, <span class="number">0</span>]:</span><br><span class="line">    torch.distributed.barrier()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 获取数据集</span></span><br><span class="line">labeled_dataset, unlabeled_dataset, test_dataset = DATASET_GETTERS[args.dataset](</span><br><span class="line">    args, <span class="string">'./data'</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> args.local_rank == <span class="number">0</span>:</span><br><span class="line">    torch.distributed.barrier()</span><br></pre></td></tr></table></figure>
+<p>有些操作是不需要多卡同时运行的，如数据集和模型的加载。因此，PyTorch对非主进程的卡上面的运行进行了barrier设置。如果是在并行训练非主卡上，其它进行需要先等待主进程读取并缓存数据集，再从缓存中读取数据，以同步不同进程的数据，避免出现数据处理不同步的现象。</p>
+<p>②模型</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> args.local_rank <span class="keyword">not</span> <span class="keyword">in</span> [-<span class="number">1</span>, <span class="number">0</span>]:</span><br><span class="line">    torch.distributed.barrier()</span><br><span class="line"></span><br><span class="line">model = create_model(args)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> args.local_rank == <span class="number">0</span>:</span><br><span class="line">    torch.distributed.barrier()</span><br></pre></td></tr></table></figure>
+<p>先对其余进程设置一个障碍，等到主进程加载完模型和数据后，再对主进程设置障碍，使所有进程都处于同一“出发线”，最后再同时释放。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/article/2022111294813030.html#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
-    <div class="collection-year">
-      <span class="collection-header">2023</span>
     </div>
 
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2023-02-10T20:54:28+08:00"
-              content="2023-02-10">
-          02-10
-        </time>
-      </div>
+    
+    
+    
 
-      <div class="post-title">
-        <a class="post-title-link" href="/article/2023021054439210.html" itemprop="url">
-          <span itemprop="name">基于半监督广义学习系统的高光谱图像分类</span>
-        </a>
-      </div>
-
+    <footer class="post-footer">
+        <div class="post-eof"></div>
       
-    </header>
+    </footer>
   </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2023-02-09T15:36:09+08:00"
-              content="2023-02-09">
-          02-09
-        </time>
-      </div>
-
-      <div class="post-title">
-        <a class="post-title-link" href="/article/20230209bc83e216.html" itemprop="url">
-          <span itemprop="name">基于自监督辅助半监督残差网络的高光谱图像分类</span>
-        </a>
-      </div>
-
-      
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2023-02-07T23:50:35+08:00"
-              content="2023-02-07">
-          02-07
-        </time>
-      </div>
-
-      <div class="post-title">
-        <a class="post-title-link" href="/article/2023020745a6f4e2.html" itemprop="url">
-          <span itemprop="name">基于深度学习的高光谱图像细粒度分类</span>
-        </a>
-      </div>
-
-      
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2023-02-07T00:03:17+08:00"
-              content="2023-02-07">
-          02-07
-        </time>
-      </div>
-
-      <div class="post-title">
-        <a class="post-title-link" href="/article/202302069487f6b7.html" itemprop="url">
-          <span itemprop="name">基于膨胀卷积神经网络的天山地区高光谱地质体分类</span>
-        </a>
-      </div>
-
-      
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2023-02-04T21:58:31+08:00"
-              content="2023-02-04">
-          02-04
-        </time>
-      </div>
-
-      <div class="post-title">
-        <a class="post-title-link" href="/article/20230204d7763d76.html" itemprop="url">
-          <span itemprop="name">基于轻量级卷积神经网络和深度聚类的协同学习在有限训练样本下的高光谱图像半监督分类</span>
-        </a>
-      </div>
-
-      
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2023-02-01T16:58:54+08:00"
-              content="2023-02-01">
-          02-01
-        </time>
-      </div>
-
-      <div class="post-title">
-        <a class="post-title-link" href="/article/2023020159010d7c.html" itemprop="url">
-          <span itemprop="name">基于半监督三维深度神经网络和自适应波段选择的高光谱图像分类</span>
-        </a>
-      </div>
-
-      
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2023-01-31T18:56:38+08:00"
-              content="2023-01-31">
-          01-31
-        </time>
-      </div>
-
-      <div class="post-title">
-        <a class="post-title-link" href="/article/202301319d7ab8f6.html" itemprop="url">
-          <span itemprop="name">基于人工标记的深度卷积神经网络在高光谱图像分类中的有效训练</span>
-        </a>
-      </div>
-
-      
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2023-01-31T17:58:57+08:00"
-              content="2023-01-31">
-          01-31
-        </time>
-      </div>
-
-      <div class="post-title">
-        <a class="post-title-link" href="/article/2023013160da2659.html" itemprop="url">
-          <span itemprop="name">基于生成对抗网络的高光谱图像分类半监督学习</span>
-        </a>
-      </div>
-
-      
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2023-01-20T20:51:05+08:00"
-              content="2023-01-20">
-          01-20
-        </time>
-      </div>
-
-      <div class="post-title">
-        <a class="post-title-link" href="/article/20230120c94939a8.html" itemprop="url">
-          <span itemprop="name">用于高光谱图像分类的折叠谱生成对抗网络</span>
-        </a>
-      </div>
-
-      
-    </header>
-  </article>
+</div>
 
 
-    </div>
-  </div>
-  
-  
-  
+
+
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" title="上一页" aria-label="上一页" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+  </nav>
 
 </div>
   </main>
@@ -607,7 +533,7 @@ mjx-container[display="true"] + br {
   
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
 
-<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"7ongorz","repo":"comments","client_id":"6d76b8f8f72b9e89ae90","client_secret":"b69b04505a5c12dc9204e5a5a17ddbe2e1e279f5","admin_user":"7ongorz","distraction_free_mode":true,"language":"zh-CN","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.min.js","integrity":"sha256-MVK9MGD/XJaGyIghSVrONSnoXoGh3IFxLw0zfvzpxR4="},"path_md5":"60e0f3aedd2bd6bf8ed30f7e481b700b"}</script>
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"7ongorz","repo":"comments","client_id":"6d76b8f8f72b9e89ae90","client_secret":"b69b04505a5c12dc9204e5a5a17ddbe2e1e279f5","admin_user":"7ongorz","distraction_free_mode":true,"language":"zh-CN","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.min.js","integrity":"sha256-MVK9MGD/XJaGyIghSVrONSnoXoGh3IFxLw0zfvzpxR4="},"path_md5":"c853ec00cc9d13bc22336b7d45d1416e"}</script>
 <script src="/js/third-party/comments/gitalk.js"></script>
 
 </body>
