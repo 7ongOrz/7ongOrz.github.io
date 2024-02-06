@@ -460,7 +460,7 @@ key（添加<strong>SSH</strong> 密钥）。</p>
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-02-06 17:43:50" itemprop="dateModified" datetime="2024-02-06T17:43:50+08:00">2024-02-06</time>
+      <time title="修改时间：2024-02-06 17:48:23" itemprop="dateModified" datetime="2024-02-06T17:48:23+08:00">2024-02-06</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -519,7 +519,7 @@ EML
 试图产生更多的低熵预测来选择更多带有伪标签的示例，而不是调整阈值，因此它也可以应用于任何动态阈值方法。
 尽管如此，仍然不可能通过阈值策略生成伪标签来利用所有未标记的数据。这促使我们进一步考虑如何利用没有伪标签的低置信度未标记示例（即最大置信度远离预定义阈值）。直观上，预测可能会在
 top 类别之间混淆，但可以确信输入不属于排在这些类别之后的类别。
- 图2展示了 FixMatch 的推理结果。真实类别是“猫”，FixMatch
+<img src="/article/20230917a675b6a1/image-20230805121006693.png" class="" title="image-20230805121006693"> 图2展示了 FixMatch 的推理结果。真实类别是“猫”，FixMatch
 被几个 top
 类别（例如“狗”、“青蛙”）混淆并做出低置信度预测，但它显示出对某些低等级类别（例如“飞机”、“马”)不是真实类别的高度置信度，因此我们可以安全地为这些类别分配负伪标签。基于这一见解，我们提出了一种名为自适应负学习（ANL）的新方法。具体来说，ANL
 首先根据预测一致性自适应计算 <span class="math inline"><mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.025ex;" xmlns="http://www.w3.org/2000/svg" width="1.179ex" height="1.595ex" role="img" focusable="false" viewBox="0 -694 521 705"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><path data-c="1D458" d="M121 647Q121 657 125 670T137 683Q138 683 209 688T282 694Q294 694 294 686Q294 679 244 477Q194 279 194 272Q213 282 223 291Q247 309 292 354T362 415Q402 442 438 442Q468 442 485 423T503 369Q503 344 496 327T477 302T456 291T438 288Q418 288 406 299T394 328Q394 353 410 369T442 390L458 393Q446 405 434 405H430Q398 402 367 380T294 316T228 255Q230 254 243 252T267 246T293 238T320 224T342 206T359 180T365 147Q365 130 360 106T354 66Q354 26 381 26Q429 26 459 145Q461 153 479 153H483Q499 153 499 144Q499 139 496 130Q455 -11 378 -11Q333 -11 305 15T277 90Q277 108 280 121T283 145Q283 167 269 183T234 206T200 217T182 220H180Q168 178 159 139T145 81T136 44T129 20T122 7T111 -2Q98 -11 83 -11Q66 -11 57 -1T48 16Q48 26 85 176T158 471L195 616Q196 629 188 632T149 637H144Q134 637 131 637T124 640T121 647Z"></path></g></g></g></svg></mjx-container></span>
