@@ -197,7 +197,7 @@ mjx-container[display="true"] + br {
 
 
 <nav class="site-nav">
-  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">5</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">2</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">28</span></a></li><li class="menu-item menu-item-resources"><a href="/resources/" rel="section"><i class="fa fa-download fa-fw"></i>资源</a></li>
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">5</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">2</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">29</span></a></li><li class="menu-item menu-item-resources"><a href="/resources/" rel="section"><i class="fa fa-download fa-fw"></i>资源</a></li>
       <li class="menu-item menu-item-search">
         <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
         </a>
@@ -262,7 +262,7 @@ mjx-container[display="true"] + br {
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">28</span>
+          <span class="site-state-item-count">29</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -424,6 +424,177 @@ key（添加<strong>SSH</strong> 密钥）。</p>
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://blog.tongorz.me/article/202311222df0ba87.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/81060761_p0.jpg">
+      <meta itemprop="name" content="Ahtong">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Ahtong's blog">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Ahtong's blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/article/202311222df0ba87.html" class="post-title-link" itemprop="url">基于多尺度 3D 空洞卷积 Swin Transformer 的高光谱图像分类</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2023-11-22 22:48:14" itemprop="dateCreated datePublished" datetime="2023-11-22T22:48:14+08:00">2023-11-22</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-02-06 18:00:42" itemprop="dateModified" datetime="2024-02-06T18:00:42+08:00">2024-02-06</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">论文笔记</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>4.3k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>14 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>原文：《Swin transformer with multiscale 3D atrous convolution for
+hyperspectral image classification》</p>
+<h2 id="摘要">摘要</h2>
+<p>高光谱图像（HSI）分类因其多样化的实际应用而引起了研究人员的极大兴趣。卷积神经网络
+(CNN) 已广泛用于 HSI 分类。然而，基于 CNN
+的方法的有效性受到卷积核的固定大小和结构以及它们无法捕获全局特征的限制。此外，这些网络不足以对数据的顺序特征进行建模。最近，出现了一种有前途的方法，即基于窗口的多头自注意力，以解决
+CNN
+的局限性并结合高效的序列建模功能。本文介绍了一种新颖的方法，即带有轻量级
+Swin Transformer 的多尺度 3D 空洞卷积
+(MACLST)，该方法有效地结合了两个网络的优势，以捕获 HSI
+分类中不同尺度的局部和全局特征。MACLST 旨在处理 HSI
+立方体作为输入，并采用基于多尺度 3D
+空洞卷积的光谱空间特征提取模块。该模块涉及具有不同空洞率的 3D
+层的并行分支，从而能够在多个尺度和分辨率下提取特征。提取的光谱空间特征被融合并作为线性嵌入传递到轻量级
+Swin Transformer 模块。该模块捕获远程依赖关系并学习 HSI
+的有效特征表示。为了降低计算复杂度，Swin Transformer
+模块经过简化，仅包含两级，提供了原始 Swin Transformer
+的更高效版本。所提出的 MACLST 模型在五个广泛使用的基准 HSI
+数据集上进行了广泛评估，实验结果验证了其优于最先进的方法，在Indian
+Pines，Pavia University，Salinas Valley，Houston University
+2013和Houston University
+2018数据集上的总体准确率分别为99.00%，99.59%，99.95%，98.71%和94.98%。</p>
+<h2 id="本文思路">本文思路</h2>
+<ol type="1">
+<li>之前的方法主要侧重于表示光谱信息，而忽略了多尺度上下文信息在捕获 HSI
+光谱空间特征中的潜在利用。可以观察到，同一类型的物体的光谱特性可能存在差异，而不同类型的物体则可能表现出相似的光谱特性。因此，仅依靠光谱特征不足以进行准确的
+HSI
+分类。空间特征捕获有关像素的空间排列和上下文的信息，在分类过程中也发挥着至关重要的作用。通过同时考虑光谱和空间特征，HSI分类模型可以更好地区分不同类别，提高分类结果。</li>
+<li>虽然基于 CNN
+的技术已成功提取空间和光谱特征，但它们也有一定的局限性。这些限制之一是它们难以捕获顺序属性，特别是中长期光谱依赖性。此外，它们提取短程特征的有效性受到固定大小的感受野的阻碍，这可能无法充分捕获数据中的细粒度细节和局部变化。</li>
+</ol>
+<p>文献表明，CNN
+擅长提取局部光谱空间信息，但由于其固定的感受野大小，难以捕获远程光谱空间特征。另一方面，Transformer
+已经显示出一种非凡的能力，可以理解远程特征之间的相互关系。集成 CNN 和
+Transformer 用于 HSI 分类的有效性在很大程度上尚未得到探索。因此，在 HSI
+分类的背景下结合这两种架构，通过结合短程和长程依赖关系，有可能增强光谱空间特征学习。</p>
+<h2 id="本文贡献">本文贡献</h2>
+<p>本文提出了一种新颖的方法，称为带有轻量级 Swin Transformer 的多尺度 3D
+空洞卷积 (MACLST) ，该方法结合了两种最先进的技术：多尺度 3D 空洞卷积
+(MAC) 和轻量级 Swin (LSwin) Transformer。目的是有效地学习 HSI
+的判别性光谱空间信息。在第一个模块中，MACLST
+采用具有不同空洞率的空洞卷积层的三个并行分支；
+这种并行设计使模型能够学习多个尺度的特征并有效地提取丰富的光谱和空间信息。多尺度3D空洞卷积可以有效地计算密集特征图，在不显著增加参数和计算成本的情况下，使网络具有更大的感受野。这对于处理诸如
+HSI 之类的高维数据尤其有利。在第二个模块中，LSwin Transformer
+旨在学习特征序列之间的关系，使模型能够提取 HSI 的局部和全局特征。LSwin
+Transformer
+采用基于窗口的多头自注意力（W-MSA）机制，有效权衡图像中不同区域的重要性并捕获远程依赖关系。LSwin
+Transformer
+的分层性质通过允许跨窗口连接带来更高的效率，并表现出相对于图像大小的线性计算复杂性，确保高效处理。
+特别是，与原来的四级 Swin Transformer 相比，所提出的 LSwinTransformer
+模块被简化为仅包括两级。Stage
+数量的减少可以使模型尺寸更紧凑，训练和推理时间更快，并在不影响性能的情况下减少内存和计算需求。通过集成
+MAC 和 LSwin Transformer 的优势，所提出的 MACLST
+模型在提取局部和全局特征方面都表现出色，从而有可能提高HSI分类的性能。本研究的主要贡献可以概括如下：</p>
+<ol type="1">
+<li>本研究引入了一种新的 HSI 分类方法，它集成了两种前言技术：多尺度 3D
+空洞卷积和轻量级 Swin Transformer。</li>
+<li>MAC 模块利用并行 3D
+空洞卷积，在光谱和空间维度上应用不同的空洞率，通过显着扩大网络的感受野而不影响重要的分辨率信息，在捕获包含高判别能力的鲁棒光谱和空间特征方面发挥着关键作用
+。</li>
+<li>LSwin Transformer
+模块在不影响精度的情况下显著降低了计算复杂度。它学习特征序列之间的关系，使网络能够对远程依赖性进行建模并提取强大的局部和全局特征表示。</li>
+<li>通过在五个基准数据集上进行的实验，证明了所提出的 MACLST 模型相对于
+HSI 分类中最先进的 (SOTA) 方法的有效性和优越性。</li>
+</ol>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/article/202311222df0ba87.html#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
     <link itemprop="mainEntityOfPage" href="https://blog.tongorz.me/article/202310295eafc669.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -533,7 +704,7 @@ Transformer
 来说是很棘手的，因为其自注意力的计算复杂度与图像大小成二次方。为了克服这些问题，我们提出了一种通用的Transformer主干，称为
 Swin
 Transformer，它构建分层特征映射，并且具有与图像大小相关的线性计算复杂度。
- 如图1(a)所示，Swin Transformer
+<img src="/article/202310295eafc669/image-20230918211430063.png" class="" title="image-20230918211430063"> 如图1(a)所示，Swin Transformer
 通过从小尺寸的补丁(用灰色表示)开始并逐渐合并更深 Transformer
 层中的相邻补丁来构建分层表示。借助这些分层特征图，Swin Transformer
 模型可以方便地利用先进技术进行密集预测，例如特征金字塔网络 (FPN) [42] 或
@@ -542,7 +713,7 @@ U-Net
 patch 数量是固定的，因此复杂度与图像大小成线性关系。这些优点使 Swin
 Transformer 适合作为各种视觉任务的通用骨干网，与之前基于 Transformer
 的架构 [20] 形成鲜明对比，后者生成单一分辨率的特征图并具有二次方复杂度。
- Swin Transformer
+<img src="/article/202310295eafc669/image-20230918214630175.png" class="" title="image-20230918214630175"> Swin Transformer
 的一个关键设计元素是连续自注意力层之间窗口分区的移动，如图 2
 所示。移动的窗口桥接了前一层的窗口，提供了它们之间的连接，从而显着增强了建模能力（参见表
 4)。这种策略在现实世界的延迟方面也很有效：窗口内的所有查询补丁共享相同的
@@ -1568,154 +1739,6 @@ Aila，2017
 
 
 
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://blog.tongorz.me/article/20230420c8f18707.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/81060761_p0.jpg">
-      <meta itemprop="name" content="Ahtong">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Ahtong's blog">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | Ahtong's blog">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/article/20230420c8f18707.html" class="post-title-link" itemprop="url">基于注意力的双向长短期记忆网络的高光谱图像分类</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2023-04-20 16:16:17" itemprop="dateCreated datePublished" datetime="2023-04-20T16:16:17+08:00">2023-04-20</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-02-04 21:49:06" itemprop="dateModified" datetime="2024-02-04T21:49:06+08:00">2024-02-04</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">论文笔记</span></a>
-        </span>
-    </span>
-
-  
-    <span class="post-meta-break"></span>
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>2.1k</span>
-    </span>
-    <span class="post-meta-item" title="阅读时长">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>7 分钟</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>原文：《Hyperspectral Image Classification Using Attention-Based
-Bidirectional Long Short-Term Memory Network》</p>
-<h2 id="摘要">摘要</h2>
-<p>深度神经网络已广泛应用于高光谱图像（HSI）分类领域，其中递归神经网络（RNN）是最典型的网络之一。
-大多数现有的基于 RNN
-的分类器将像素的光谱特征视为有序序列，其中仅考虑沿相邻波段波长方向的单向相关性。
-然而，每个波段图像不仅与其之前的波段图像相关，而且与其连续的波段图像相关。
-为了充分探索 HSI 中的这种双向光谱相关性，在本文中，为 HSI
-分类设计了一个基于双向长短期记忆 (Bi-LSTM) 的网络。 此外，在所提出的
-Bi-LSTM
-网络中设计并实现了一种空间-光谱注意机制，以强调有效信息并减少像素空间-光谱上下文中的冗余信息，从而大大提高分类性能。
-三个基准 HSI（即Salinas Valley、Pavia Centre和Pavia
-University）的实验结果表明，我们提出的 Bi-LSTM
-明显优于几种最先进的基于单向 RNN 的分类算法。
-此外，所提出的空间-光谱注意机制可以通过有效地加权像素的空间和光谱上下文来进一步提高我们提出的
-Bi-LSTM 算法的分类精度。 拟议的 Bi-LSTM 算法的源代码可在
-https://github.com/MeiShaohui/Attention-basedBidirectional-LSTM-Network
-获得。</p>
-<h2 id="主要问题">主要问题</h2>
-<ol type="1">
-<li>现有的基于rnn的工作主要是将一个HSI的每个像素作为沿光谱方向的有序序列，无法充分探索一个HSI内的光谱相似性。</li>
-<li>分类任务中至关重要的像素空间上下文不能直接用于传统的
-RNN。尽管已经使用双向卷积 LSTM 进行空间-光谱特征学习以对 HSI 进行分类
-[53]，但由于空间特征和光谱特征是单独探索并连接起来进行分类的，因此没有得到很好的探索。</li>
-</ol>
-<h2 id="解决方法">解决方法</h2>
-<ol type="1">
-<li>使用Bi-LSTM网络来考虑波段图像的双向相关性，其中同时考虑前向和后向相关性来对
-HSI 进行分类。</li>
-<li>设计了一种空间-光谱注意机制，以强调像素的空间-光谱上下文之间的有效信息，削弱冗余信息，通过该机制对像素的空间和光谱上下文进行加权，以缓解光谱变化。</li>
-</ol>
-<h2 id="本文方法">本文方法</h2>
-<h3 id="bi-lstm的体系结构">Bi-LSTM的体系结构</h3>
-<img src="/article/20230420c8f18707/image-20230418110319575.png" class="" title="image-20230418110319575">
-<p>如图 1 所示，在所提出的基于 Bi-LSTM 的 HSI
-分类策略中，原始高光谱数据首先使用分块和归一化进行预处理，然后依次馈送到空间光谱注意模块和
-Bi-LSTM 预测模块。
-在注意力模块中，融合了空间-光谱信息，通过注意力机制对像素的空间和光谱上下文进行加权，以减轻光谱变化。
-同时，它允许网络处理 3-D 输入，从而在仅支持 2-D 数据输入的传统 LSTM
-和具有 3 个维度的 HSI 数据之间建立了桥梁。 在 Bi-LSTM
-预测模块中，通过同时探索沿谱维度的前向和后向相关性来进行特征提取。
-最后，提取的空间-光谱联合特征使用经典的 softmax 分类器进行分类。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/article/20230420c8f18707.html#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
   <nav class="pagination">
     <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" title="下一页" aria-label="下一页" href="/page/2/"><i class="fa fa-angle-right"></i></a>
   </nav>
@@ -1740,14 +1763,14 @@ Bi-LSTM 预测模块。
       <i class="fa fa-chart-line"></i>
     </span>
       <span>站点总字数：</span>
-    <span title="站点总字数">77k</span>
+    <span title="站点总字数">81k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span>站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">4:17</span>
+    <span title="站点阅读时长">4:31</span>
   </span>
 </div>
 <div class="busuanzi-count">
