@@ -500,7 +500,12 @@ Learning for Hyperspectral Image Classification》</p>
 
 
 
-    <div class="comments gitalk-container"></div>
+    
+  
+  <div class="comments giscus-container">
+  </div>
+  
+  
 </div>
   </main>
 
@@ -615,10 +620,33 @@ Learning for Hyperspectral Image Classification》</p>
   </script>
 
   
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
+<script class="next-config" data-name="giscus" type="application/json">{"enable":true,"repo":"7ongOrz/comments","repo_id":"R_kgDOLMZT5A","category":"Announcements","category_id":"DIC_kwDOLMZT5M4CdAO0","mapping":"url","reactions_enabled":1,"emit_metadata":1,"theme":"preferred_color_scheme","lang":"zh-CN","crossorigin":"anonymous","input_position":"top","loading":"lazy"}</script>
 
-<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"7ongorz","repo":"comments","client_id":"6d76b8f8f72b9e89ae90","client_secret":"b69b04505a5c12dc9204e5a5a17ddbe2e1e279f5","admin_user":"7ongorz","distraction_free_mode":true,"language":"zh-CN","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.min.js","integrity":"sha256-MVK9MGD/XJaGyIghSVrONSnoXoGh3IFxLw0zfvzpxR4="},"path_md5":"3799674c42c359a95cda84175a66a6f4"}</script>
-<script src="/js/third-party/comments/gitalk.js"></script>
+<script>
+document.addEventListener('page:loaded', () => {
+  if (!CONFIG.page.comments) return;
+
+  NexT.utils.loadComments('.giscus-container')
+    .then(() => NexT.utils.getScript('https://giscus.app/client.js', {
+      attributes: {
+        async                   : true,
+        crossOrigin             : 'anonymous',
+        'data-repo'             : CONFIG.giscus.repo,
+        'data-repo-id'          : CONFIG.giscus.repo_id,
+        'data-category'         : CONFIG.giscus.category,
+        'data-category-id'      : CONFIG.giscus.category_id,
+        'data-mapping'          : CONFIG.giscus.mapping,
+        'data-reactions-enabled': CONFIG.giscus.reactions_enabled,
+        'data-emit-metadata'    : CONFIG.giscus.emit_metadata,
+        'data-theme'            : CONFIG.giscus.theme,
+        'data-lang'             : CONFIG.giscus.lang,
+        'data-input-position'   : CONFIG.giscus.input_position,
+        'data-loading'          : CONFIG.giscus.loading
+      },
+      parentNode: document.querySelector('.giscus-container')
+    }));
+});
+</script>
 
 </body>
 </html>
