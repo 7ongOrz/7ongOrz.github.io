@@ -1,0 +1,55 @@
+{%- if theme.canvas_nest.enable %}
+<script color="0,0,0" opacity="0.5" zIndex="-1" count="99" src="https://cdn.jsdelivr.net/npm/canvas-nest.js@1/dist/canvas-nest.js"></script>
+{%- endif %}
+
+{%- if theme.footer.site_runtime.enable %}
+<script>
+(() => {
+  const startedAt = '{{ theme.footer.site_runtime.since }}';
+  const started = new Date(
+    Number(startedAt.slice(0, 4)),
+    Number(startedAt.slice(4, 6)) - 1,
+    Number(startedAt.slice(6, 8)),
+    Number(startedAt.slice(8, 10)),
+    Number(startedAt.slice(10, 12)),
+    Number(startedAt.slice(12, 14))
+  );
+  const footer = document.querySelector('.footer-inner');
+  if (!footer || Number.isNaN(started.getTime())) return;
+
+  const runtime = document.createElement('div');
+  runtime.className = 'site-runtime';
+  footer.appendChild(runtime);
+
+  const renderRuntime = () => {
+    let diff = Math.max(0, Date.now() - started.getTime());
+    const day = Math.floor(diff / 86400000);
+    diff %= 86400000;
+    const hour = Math.floor(diff / 3600000);
+    diff %= 3600000;
+    const minute = Math.floor(diff / 60000);
+    const second = Math.floor((diff % 60000) / 1000);
+    runtime.innerHTML = '本站已稳定运行 <span style="color: {{ theme.footer.site_runtime.color }};">'
+      + `${day} 天 ${hour} 小时 ${minute} 分钟 ${second} 秒</span>`;
+  };
+
+  renderRuntime();
+  setInterval(renderRuntime, 1000);
+})();
+</script>
+{%- endif %}
+
+{%- if theme.cursor_effect == 'fireworks' %}
+<script async src="{{ url_for('/js/cursor/firework.js') }}"></script>
+{%- endif %}
+{%- if theme.cursor_effect == 'explosion' %}
+<canvas class="fireworks" style="position: fixed; left: 0; top: 0; z-index: 1; pointer-events: none;"></canvas>
+<script src="https://cdn.jsdelivr.net/npm/animejs@2.2.0/anime.min.js"></script>
+<script async src="{{ url_for('/js/cursor/explosion.min.js') }}"></script>
+{%- endif %}
+{%- if theme.cursor_effect == 'love' %}
+<script async src="{{ url_for('/js/cursor/love.min.js') }}"></script>
+{%- endif %}
+{%- if theme.cursor_effect == 'text' %}
+<script async src="{{ url_for('/js/cursor/text.js') }}"></script>
+{%- endif %}
