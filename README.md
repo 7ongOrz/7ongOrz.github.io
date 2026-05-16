@@ -1,6 +1,6 @@
 # AhTong's blog
 
-这是 Hexo 源站仓库。GitHub Actions 会在推送到 `master` 或 `main` 后安装依赖、生成 `public/`，再把 `public/` 作为 GitHub Pages artifact 发布。
+这是 Hexo 源站仓库。GitHub Actions 会在推送到 `master` 后安装依赖、生成 `public/`，再把 `public/` 作为 GitHub Pages artifact 发布。
 
 发布前需要在仓库 Settings -> Pages -> Build and deployment 中把 Source 设置为 `GitHub Actions`。
 
