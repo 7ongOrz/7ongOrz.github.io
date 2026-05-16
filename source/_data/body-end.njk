@@ -1,5 +1,23 @@
 {%- if theme.canvas_nest.enable %}
 <style>
+.post-body,
+.post-body a,
+.post-body li,
+.post-body p,
+.post-body td,
+.post-body th,
+.post-copyright,
+.post-copyright a {
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+.post-body mjx-container:not([display='true']) {
+  display: inline-block;
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  vertical-align: middle;
+}
 body > canvas[id^='c_n'] {
   max-width: 100% !important;
   pointer-events: none !important;

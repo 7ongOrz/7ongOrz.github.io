@@ -1,4 +1,14 @@
 .post-body
+  overflow-wrap: anywhere
+
+  a,
+  li,
+  p,
+  td,
+  th
+    overflow-wrap: anywhere
+    word-break: break-word
+
   mjx-container[display='true']
     box-sizing: border-box
     max-width: 100%
@@ -10,3 +20,15 @@
 
     > svg
       max-width: none
+
+  mjx-container:not([display='true'])
+    display: inline-block
+    max-width: 100%
+    overflow-x: auto
+    overflow-y: hidden
+    vertical-align: middle
+
+.post-copyright,
+.post-copyright a
+  overflow-wrap: anywhere
+  word-break: break-word
