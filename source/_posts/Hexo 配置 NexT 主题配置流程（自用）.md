@@ -16,8 +16,12 @@ coverImg:
 password:
 ---
 
+> 2026-05-16 更新：当前站点已经迁移为 GitHub Actions 构建，并通过 npm 包 `hexo-theme-next` 使用 NexT 主题。本文早期记录中的 `themes/next/...` 路径属于旧 Docker/手工主题目录时期的做法，作为历史记录保留；现在调整主题时优先修改仓库根目录的 `_config.next.yml` 或 `source/_data` 下的自定义文件。
+
 ## Hexo 部署
+
 ### docker 版本一键安装
+
 采用 [appotry](https://github.com/appotry) 的docker版本
 
 ```bash
