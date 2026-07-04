@@ -25,9 +25,9 @@
 - 需要 git add/commit/push 时，可能要申请提升权限，因为 sandbox 可能无法写 .git/index.lock。
 
 仓库当前重要文件：
-- package.json：Hexo 和插件依赖。当前 Hexo 为 8.1.2，hexo-theme-next 为 8.27.0。
-- _config.yml：Hexo 站点配置，包括 url、permalink、文章资源目录、MathJax、搜索、Giscus 评论等。
-- _config.next.yml：NexT 外置主题配置。这里启用了 custom_file_path.style: source/_data/styles.styl 和 bodyEnd: source/_data/body-end.njk。
+- package.json：Hexo 和插件依赖。当前 Hexo 为 8.1.2，hexo-theme-next 为 8.28.0，hexo-filter-mathjax 为 0.11.0。
+- _config.yml：Hexo 站点配置，包括 url、permalink、文章资源目录、服务端 MathJax、搜索、Giscus 评论等。
+- _config.next.yml：NexT 外置主题配置。这里启用了 custom_file_path.style: source/_data/styles.styl 和 bodyEnd: source/_data/body-end.njk；NexT 前端 MathJax/Katex 渲染保持关闭，避免与 hexo-filter-mathjax 重复渲染。
 - source/_posts：文章 Markdown 和每篇文章自己的图片资源目录。
 - source/_data/styles.styl：NexT 自定义样式。当前包含 MathJax 和移动端正文溢出兜底。
 - source/_data/body-end.njk：NexT body 末尾注入。当前包含 canvas-nest、站点运行时间、可选鼠标点击特效，以及为避免 CSS 缓存导致手机端溢出的内联移动端兜底样式。
@@ -42,7 +42,7 @@
 - workflow 使用 Node.js 22。
 - workflow 先 apt-get install pandoc，再 npm install --no-audit --no-fund，再 npm run clean 和 npm run build。
 - 当前没有提交 package-lock.json；如果以后在有 npm 的环境中确认构建成功，建议生成并提交 package-lock.json，然后把 workflow 的 npm install 改为 npm ci --no-audit --no-fund。
-- 依赖版本在之前检查时均为 npm registry latest：hexo 8.1.2、hexo-theme-next 8.27.0、hexo-next-giscus 1.3.0 等。
+- 当前依赖基线：hexo 8.1.2、hexo-theme-next 8.28.0、hexo-filter-mathjax 0.11.0、hexo-next-giscus 1.3.0 等。
 
 评论方案：
 - NexT 内置的 disqus/gitalk/utterances 等在 _config.next.yml 中未启用。
@@ -76,10 +76,16 @@
   - 把 canvas-nest 的宽度/触摸事件兜底移到 body-end.njk 内联样式里，避免 main.css 缓存影响。
 - 2cba498 fix: guard mobile post overflow
   - 添加移动端正文溢出兜底，长 URL、长英文/符号串、行内公式、版权链接不再撑开整页。
+- be8a2e4 Merge pull request #1
+  - Dependabot 更新 actions/checkout 到 v7。
+- c5f5d13 Merge pull request #2
+  - Dependabot 更新 hexo-theme-next 到 8.28.0。
+- 2dadba2 Merge pull request #3
+  - Dependabot 更新 hexo-filter-mathjax 到 0.11.0，服务端 MathJax 升到 MathJax 4。
 
 当前 HEAD：
-- master / origin/master 当前 HEAD 是 2cba498 fix: guard mobile post overflow。
-- 最近一次 Pages workflow 成功：25962093394，head_sha 2cba498，URL https://github.com/7ongOrz/7ongOrz.github.io/actions/runs/25962093394。
+- 继续工作前先运行 `git status --short --branch` 和 `git log --oneline --decorate -5`，以当前仓库状态为准。
+- 最近的依赖更新基线是 2dadba2，后续本文件可能再随维护提交前进。
 
 已经验证过的内容：
 - git status 干净：## master...origin/master。
@@ -155,6 +161,7 @@
 
 发现过 MTGAN 文章手机端宽度被 MathJax SVG 长公式撑到 566px。修复方式：
 
+- 公式由 `hexo-filter-mathjax` 在服务端渲染；`_config.next.yml` 中 NexT 前端 `math.mathjax.enable` 和 `math.katex.enable` 均保持 `false`，避免重复加载/重复渲染。
 - 在 `source/_data/styles.styl` 中给 `.post-body mjx-container[display='true']` 添加 `max-width: 100%`、`min-width: 0 !important`、`overflow-x: auto`、`width: 100%`。
 - 将 MTGAN 文章中公式 `(7)` 到 `(11)` 拆成多行 `aligned`。
 - 对行内公式和长文本添加移动端兜底，避免长 URL、长英文/符号串撑开正文。
