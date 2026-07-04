@@ -77,7 +77,7 @@ h_{0} &=[\mathbf{X}_{\mathrm{class}};\mathbf{X}_{p}^{1}\mathbf{E};\mathbf{X}_{p}
 \end{align}
 $$
 
-其中，$E\in\mathbb{R}^{P^2·I×d},{\scr l}=1,...,{\cal L}$。
+其中，$E\in\mathbb{R}^{P^2·I×d},\ell=1,...,{\cal L}$。
 查询、键和值表示由可学习的矩阵$W_q\in\mathbb{R}^{d×d_k}$，$W_k\in\mathbb{R}^{d×d_k}$和$W_v\in\mathbb{R}^{d_k×d_v}$表示。公式（8）展示了单个自注意力头（索引为$j$）的计算。
 
 $$
@@ -85,7 +85,7 @@ $$
 \tag{8}
 $$
 
-其中，$Q={\cal X}W_q$，$K={\cal X}W_k$和$V={\cal X}W_v$，${\cal X}=LN(h_{\scr l}),{\scr l}=1,...,{\cal L}$表示Transformer编码器的输入。
+其中，$Q={\cal X}W_q$，$K={\cal X}W_k$和$V={\cal X}W_v$，${\cal X}=LN(h_\ell),\ell=1,...,{\cal L}$表示Transformer编码器的输入。
 在(9)中，(5)中的MSA通过串联和线性投影整合了来自$J$个自注意力头部的信息。
 
 $$
@@ -174,7 +174,7 @@ $$
 \end{align}
 $$
 
-其中，符号$\odot$是逐元素点积。 层内输入总和的均值和方差分别由$\mu$和$\sigma$跟踪。由噪声$z$控制的自适应归一化参数由${\scr\gamma_l}$和${\scr\beta_l}$计算。最终，HSI 像素值$X_p^i\in\mathbb{R}^{p^2\times B}$通过一个隐式神经表示单元从 HSI patch 嵌入$y^i\in\mathbb{R}^d$进行映射，如公式 (17) 所示。
+其中，符号$\odot$是逐元素点积。 层内输入总和的均值和方差分别由$\mu$和$\sigma$跟踪。由噪声$z$控制的自适应归一化参数由$\gamma_l$和$\beta_l$计算。最终，HSI 像素值$X_p^i\in\mathbb{R}^{p^2\times B}$通过一个隐式神经表示单元从 HSI patch 嵌入$y^i\in\mathbb{R}^d$进行映射，如公式 (17) 所示。
 值得指出的是，在生成器的设计中也使用了CAF模块，以加强不同块之间的关联，减少关键信息被遗忘的程度。
 
 ### 分类器设计
@@ -199,7 +199,7 @@ $N=\frac{H×W}{P^2}$我的理解是，整个图像大小为$H\times W$，取patc
 
 #### 符号说明
 
-其中，$E\in\mathbb{R}^{P^2·I×d},{\scr l}=1,...,{\cal L}$。此处${\cal L}$有错误，原论文是${\cal L}$，相当于这个论文的${\cal N}$，因为 Transformer 只吃一连串的Embedding (1D) 作为输入，本文将输入图像切分为大小$P\times P$的区块 (Patch)，透过隐藏向量（Constant latent vector）$E$，将一维的Patch映射到维度为$d$的线性空间 (Patch Embedding) (Eq. 1)，完成将影像从$P\times P$降维成$d$。
+其中，$E\in\mathbb{R}^{P^2·I×d},\ell=1,...,{\cal L}$。此处${\cal L}$有错误，原论文是${\cal L}$，相当于这个论文的${\cal N}$，因为 Transformer 只吃一连串的Embedding (1D) 作为输入，本文将输入图像切分为大小$P\times P$的区块 (Patch)，透过隐藏向量（Constant latent vector）$E$，将一维的Patch映射到维度为$d$的线性空间 (Patch Embedding) (Eq. 1)，完成将影像从$P\times P$降维成$d$。
 
 #### 分类嵌入
 

@@ -162,6 +162,8 @@
 发现过 MTGAN 文章手机端宽度被 MathJax SVG 长公式撑到 566px。修复方式：
 
 - 公式由 `hexo-filter-mathjax` 在服务端渲染；`_config.next.yml` 中 NexT 前端 `math.mathjax.enable` 和 `math.katex.enable` 均保持 `false`，避免重复加载/重复渲染。
+- `hexo-filter-mathjax` 0.11.0 使用 MathJax 4，`_config.yml` 的 `mathjax.tags` 使用 `ams`，由插件加载 AMS TeX 包，以支持现有文章里的 `align`、`aligned`、`cases`、`bmatrix` 和 `\tag`。
+- 文章源码尽量使用标准 TeX 命令；不要再用 `\scr` 或 `\textless` 这类在 MathJax 4 服务端渲染中不稳定的写法。
 - 在 `source/_data/styles.styl` 中给 `.post-body mjx-container[display='true']` 添加 `max-width: 100%`、`min-width: 0 !important`、`overflow-x: auto`、`width: 100%`。
 - 将 MTGAN 文章中公式 `(7)` 到 `(11)` 拆成多行 `aligned`。
 - 对行内公式和长文本添加移动端兜底，避免长 URL、长英文/符号串撑开正文。
