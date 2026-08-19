@@ -372,8 +372,6 @@ theme_color:
 body_scrollbar:
   # Place the scrollbar over the content.
   overlay: false
-  # Reserving space for the scrollbar gutter even if the content is not overflowing.
-  stable: false
 
 codeblock:
   # Code Highlight theme
@@ -605,10 +603,6 @@ fancybox: false
 # Warning: Do not enable both `fancybox` and `mediumzoom`.
 # For more information: https://medium-zoom.francoischalifour.com
 mediumzoom: false
-
-# Vanilla JavaScript plugin for lazyloading images.
-# For more information: https://apoorv.pro/lozad.js/demo/
-lazyload: false
 
 # Automatically insert whitespace between CJK and half-width characters.
 # For more information: https://github.com/vinta/pangu.js
